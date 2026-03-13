@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "Person.json",
+  "title": "Google People Person",
+  "description": "A person resource from the Google People API representing a contact or profile.",
+  "type": "object",
+  "properties": {
+    "resourceName": {
+      "type": "string",
+      "description": "The resource name for the person."
+    },
+    "etag": {
+      "type": "string",
+      "description": "The HTTP entity tag of the resource."
+    },
+    "names": {
+      "type": "array",
+      "description": "The person's names.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "familyName": {
+            "type": "string"
+          },
+          "givenName": {
+            "type": "string"
+          },
+          "middleName": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "emailAddresses": {
+      "type": "array",
+      "description": "The person's email addresses.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "format": "email"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "phoneNumbers": {
+      "type": "array",
+      "description": "The person's phone numbers.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "addresses": {
+      "type": "array",
+      "description": "The person's addresses.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "formattedValue": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "streetAddress": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "organizations": {
+      "type": "array",
+      "description": "The person's organizations.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "photos": {
+      "type": "array",
+      "description": "The person's photos.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "birthdays": {
+      "type": "array",
+      "description": "The person's birthdays.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "integer"
+              },
+              "month": {
+                "type": "integer"
+              },
+              "day": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "biographies": {
+      "type": "array",
+      "description": "The person's biographies.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "urls": {
+      "type": "array",
+      "description": "The person's associated URLs.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "format": "uri"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

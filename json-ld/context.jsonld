@@ -1,0 +1,25 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "people": "https://people.googleapis.com/v1/",
+    "Person": "schema:Person",
+    "name": "schema:name",
+    "givenName": "schema:givenName",
+    "familyName": "schema:familyName",
+    "email": "schema:email",
+    "telephone": "schema:telephone",
+    "address": "schema:address",
+    "PostalAddress": "schema:PostalAddress",
+    "streetAddress": "schema:streetAddress",
+    "addressLocality": "schema:addressLocality",
+    "addressRegion": "schema:addressRegion",
+    "postalCode": "schema:postalCode",
+    "addressCountry": "schema:addressCountry",
+    "worksFor": "schema:worksFor",
+    "jobTitle": "schema:jobTitle",
+    "image": "schema:image",
+    "birthDate": "schema:birthDate",
+    "url": "schema:url",
+    "ContactPoint": "schema:ContactPoint"
+  }
+}

@@ -1,0 +1,406 @@
+openapi: 3.1.0
+info:
+  title: Google People API
+  description: >-
+    The Google People API provides access to information about profiles and
+    contacts. It enables reading and managing the authenticated user's contacts
+    and accessing profile information for authenticated users across Google
+    services.
+  version: 1.0.0
+  contact:
+    name: Google
+    url: https://developers.google.com/people
+servers:
+  - url: https://people.googleapis.com/v1
+paths:
+  /people/{resourceName}:
+    get:
+      operationId: getPerson
+      summary: Get Person
+      description: Provides information about a person by specifying a resource name.
+      parameters:
+        - name: resourceName
+          in: path
+          required: true
+          description: The resource name of the person (e.g., people/me).
+          schema:
+            type: string
+        - name: personFields
+          in: query
+          required: true
+          description: >-
+            A field mask to restrict which fields on the person are returned.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+  /people:batchGet:
+    get:
+      operationId: batchGetPeople
+      summary: Batch Get People
+      description: Provides information about a list of specific people.
+      parameters:
+        - name: resourceNames
+          in: query
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+        - name: personFields
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+  /people:searchContacts:
+    get:
+      operationId: searchContacts
+      summary: Search Contacts
+      description: Provides a list of contacts in the user's contact groups that match a query.
+      parameters:
+        - name: query
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: readMask
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+  /people:createContact:
+    post:
+      operationId: createContact
+      summary: Create Contact
+      description: Create a new contact and return the person resource for that contact.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+  /people/{resourceName}:deleteContact:
+    delete:
+      operationId: deleteContact
+      summary: Delete Contact
+      description: Delete a contact person.
+      parameters:
+        - name: resourceName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+  /people/{resourceName}:updateContact:
+    patch:
+      operationId: updateContact
+      summary: Update Contact
+      description: Update contact data for an existing contact person.
+      parameters:
+        - name: resourceName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: updatePersonFields
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+  /people/me/connections:
+    get:
+      operationId: listConnections
+      summary: List Connections
+      description: Provides a list of the authenticated user's contacts.
+      parameters:
+        - name: personFields
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum:
+              - LAST_MODIFIED_ASCENDING
+              - LAST_MODIFIED_DESCENDING
+              - FIRST_NAME_ASCENDING
+              - LAST_NAME_ASCENDING
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConnectionsResponse'
+  /contactGroups:
+    get:
+      operationId: listContactGroups
+      summary: List Contact Groups
+      description: List all contact groups owned by the authenticated user.
+      parameters:
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: createContactGroup
+      summary: Create Contact Group
+      description: Create a new contact group.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactGroup'
+      responses:
+        '200':
+          description: Successful response
+  /contactGroups/{resourceName}:
+    get:
+      operationId: getContactGroup
+      summary: Get Contact Group
+      description: Get a specific contact group.
+      parameters:
+        - name: resourceName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+    put:
+      operationId: updateContactGroup
+      summary: Update Contact Group
+      description: Update the name of an existing contact group.
+      parameters:
+        - name: resourceName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactGroup'
+      responses:
+        '200':
+          description: Successful response
+    delete:
+      operationId: deleteContactGroup
+      summary: Delete Contact Group
+      description: Delete an existing contact group.
+      parameters:
+        - name: resourceName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/contacts: Manage contacts
+            https://www.googleapis.com/auth/contacts.readonly: View contacts
+  schemas:
+    Person:
+      type: object
+      properties:
+        resourceName:
+          type: string
+        etag:
+          type: string
+        names:
+          type: array
+          items:
+            type: object
+            properties:
+              displayName:
+                type: string
+              familyName:
+                type: string
+              givenName:
+                type: string
+              middleName:
+                type: string
+        emailAddresses:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              type:
+                type: string
+        phoneNumbers:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              type:
+                type: string
+        addresses:
+          type: array
+          items:
+            type: object
+            properties:
+              formattedValue:
+                type: string
+              type:
+                type: string
+              streetAddress:
+                type: string
+              city:
+                type: string
+              region:
+                type: string
+              postalCode:
+                type: string
+              country:
+                type: string
+        organizations:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              title:
+                type: string
+        photos:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+        birthdays:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: object
+                properties:
+                  year:
+                    type: integer
+                  month:
+                    type: integer
+                  day:
+                    type: integer
+        biographies:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+        urls:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              type:
+                type: string
+    ContactGroup:
+      type: object
+      properties:
+        resourceName:
+          type: string
+        etag:
+          type: string
+        name:
+          type: string
+        formattedName:
+          type: string
+        memberCount:
+          type: integer
+        groupType:
+          type: string
+    ListConnectionsResponse:
+      type: object
+      properties:
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+        nextPageToken:
+          type: string
+        totalPeople:
+          type: integer
+        totalItems:
+          type: integer
+security:
+  - OAuth2: []
