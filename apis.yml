@@ -1,3 +1,4 @@
+aid: google-people
 name: Google People API
 description: >-
   The Google People API provides access to information about profiles and
@@ -6,8 +7,9 @@ description: >-
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/google-people/refs/heads/main/apis.yml
 created: '2026-03-13'
-modified: '2026-03-13'
-specificationVersion: '0.18'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+type: Index
 tags:
   - People
   - Contacts
@@ -22,20 +24,38 @@ apis:
       and accessing profile information.
     humanURL: https://developers.google.com/people
     baseURL: https://people.googleapis.com/v1
-    properties:
-      - type: OpenAPI
-        url: openapi/openapi.yml
-      - type: JSONSchema
-        url: json-schema/Person.json
     tags:
       - People
       - Contacts
       - Profiles
+    properties:
+      - type: Documentation
+        url: https://developers.google.com/people/api/rest
+      - type: OpenAPI
+        url: openapi/openapi.yml
+      - type: Authentication
+        url: https://developers.google.com/people/v1/how-tos/authorizing
+      - type: Getting Started
+        url: https://developers.google.com/people/v1/getting-started
+      - type: JSONSchema
+        url: json-schema/Person.json
 common:
-  - type: GettingStarted
-    url: https://developers.google.com/people/v1/getting-started
-  - type: Pricing
+  - type: Portal
     url: https://developers.google.com/people
+  - type: Getting Started
+    url: https://developers.google.com/people/v1/getting-started
+  - type: Documentation
+    url: https://developers.google.com/people
+  - type: Authentication
+    url: https://developers.google.com/people/v1/how-tos/authorizing
+  - type: Terms of Service
+    url: https://developers.google.com/terms
+  - type: Privacy Policy
+    url: https://policies.google.com/privacy
+  - type: Status
+    url: https://status.cloud.google.com/
+  - type: Support
+    url: https://developers.google.com/people/v1/support
   - type: JSON-LD
     url: json-ld/context.jsonld
 maintainers:
