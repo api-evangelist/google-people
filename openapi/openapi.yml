@@ -39,6 +39,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Person'
+      tags:
+        - People
   /people:batchGet:
     get:
       operationId: batchGetPeople
@@ -60,6 +62,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - people:batchGet
   /people:searchContacts:
     get:
       operationId: searchContacts
@@ -83,6 +87,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - people:searchContacts
   /people:createContact:
     post:
       operationId: createContact
@@ -101,6 +107,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Person'
+      tags:
+        - people:createContact
   /people/{resourceName}:deleteContact:
     delete:
       operationId: deleteContact
@@ -115,6 +123,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - People
   /people/{resourceName}:updateContact:
     patch:
       operationId: updateContact
@@ -144,6 +154,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Person'
+      tags:
+        - People
   /people/me/connections:
     get:
       operationId: listConnections
@@ -179,6 +191,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListConnectionsResponse'
+      tags:
+        - People
   /contactGroups:
     get:
       operationId: listContactGroups
@@ -196,6 +210,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - contactGroups
     post:
       operationId: createContactGroup
       summary: Google People Create Contact Group
@@ -209,6 +225,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - contactGroups
   /contactGroups/{resourceName}:
     get:
       operationId: getContactGroup
@@ -227,6 +245,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContactGroup'
+      tags:
+        - contactGroups
     put:
       operationId: updateContactGroup
       summary: Google People Update Contact Group
@@ -246,6 +266,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - contactGroups
     delete:
       operationId: deleteContactGroup
       summary: Google People Delete Contact Group
@@ -259,6 +281,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - contactGroups
 components:
   securitySchemes:
     OAuth2:
@@ -404,3 +428,9 @@ components:
           type: integer
 security:
   - OAuth2: []
+tags:
+  - name: contactGroups
+  - name: People
+  - name: people:batchGet
+  - name: people:createContact
+  - name: people:searchContacts
