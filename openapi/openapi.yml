@@ -16,7 +16,7 @@ paths:
   /people/{resourceName}:
     get:
       operationId: getPerson
-      summary: Get Person
+      summary: Google People Get Person
       description: Provides information about a person by specifying a resource name.
       parameters:
         - name: resourceName
@@ -42,7 +42,7 @@ paths:
   /people:batchGet:
     get:
       operationId: batchGetPeople
-      summary: Batch Get People
+      summary: Google People Batch Get People
       description: Provides information about a list of specific people.
       parameters:
         - name: resourceNames
@@ -63,7 +63,7 @@ paths:
   /people:searchContacts:
     get:
       operationId: searchContacts
-      summary: Search Contacts
+      summary: Google People Search Contacts
       description: Provides a list of contacts in the user's contact groups that match a query.
       parameters:
         - name: query
@@ -86,7 +86,7 @@ paths:
   /people:createContact:
     post:
       operationId: createContact
-      summary: Create Contact
+      summary: Google People Create Contact
       description: Create a new contact and return the person resource for that contact.
       requestBody:
         required: true
@@ -104,7 +104,7 @@ paths:
   /people/{resourceName}:deleteContact:
     delete:
       operationId: deleteContact
-      summary: Delete Contact
+      summary: Google People Delete Contact
       description: Delete a contact person.
       parameters:
         - name: resourceName
@@ -118,7 +118,7 @@ paths:
   /people/{resourceName}:updateContact:
     patch:
       operationId: updateContact
-      summary: Update Contact
+      summary: Google People Update Contact
       description: Update contact data for an existing contact person.
       parameters:
         - name: resourceName
@@ -147,7 +147,7 @@ paths:
   /people/me/connections:
     get:
       operationId: listConnections
-      summary: List Connections
+      summary: Google People List Connections
       description: Provides a list of the authenticated user's contacts.
       parameters:
         - name: personFields
@@ -182,7 +182,7 @@ paths:
   /contactGroups:
     get:
       operationId: listContactGroups
-      summary: List Contact Groups
+      summary: Google People List Contact Groups
       description: List all contact groups owned by the authenticated user.
       parameters:
         - name: pageSize
@@ -198,7 +198,7 @@ paths:
           description: Successful response
     post:
       operationId: createContactGroup
-      summary: Create Contact Group
+      summary: Google People Create Contact Group
       description: Create a new contact group.
       requestBody:
         required: true
@@ -212,7 +212,7 @@ paths:
   /contactGroups/{resourceName}:
     get:
       operationId: getContactGroup
-      summary: Get Contact Group
+      summary: Google People Get Contact Group
       description: Get a specific contact group.
       parameters:
         - name: resourceName
@@ -229,7 +229,7 @@ paths:
                 $ref: '#/components/schemas/ContactGroup'
     put:
       operationId: updateContactGroup
-      summary: Update Contact Group
+      summary: Google People Update Contact Group
       description: Update the name of an existing contact group.
       parameters:
         - name: resourceName
@@ -248,7 +248,7 @@ paths:
           description: Successful response
     delete:
       operationId: deleteContactGroup
-      summary: Delete Contact Group
+      summary: Google People Delete Contact Group
       description: Delete an existing contact group.
       parameters:
         - name: resourceName
