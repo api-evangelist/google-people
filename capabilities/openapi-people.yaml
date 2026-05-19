@@ -1,0 +1,238 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google People API — People
+  description: 'Google People API — People. 4 operations. Lead operation: Google People List Connections. Self-contained Naftiko
+    capability covering one Google People business surface.'
+  tags:
+  - Google People
+  - People
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_PEOPLE_API_KEY: GOOGLE_PEOPLE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openapi-people
+    baseUri: https://people.googleapis.com/v1
+    description: Google People API — People business capability. Self-contained, no shared references.
+    resources:
+    - name: people-me-connections
+      path: /people/me/connections
+      operations:
+      - name: listconnections
+        method: GET
+        description: Google People List Connections
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: personFields
+          in: query
+          type: string
+          required: true
+        - name: pageSize
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+        - name: sortOrder
+          in: query
+          type: string
+    - name: people-resourceName
+      path: /people/{resourceName}
+      operations:
+      - name: getperson
+        method: GET
+        description: Google People Get Person
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceName
+          in: path
+          type: string
+          description: The resource name of the person (e.g., people/me).
+          required: true
+        - name: personFields
+          in: query
+          type: string
+          description: A field mask to restrict which fields on the person are returned.
+          required: true
+    - name: people-resourceName}:deleteContact
+      path: /people/{resourceName}:deleteContact
+      operations:
+      - name: deletecontact
+        method: DELETE
+        description: Google People Delete Contact
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceName
+          in: path
+          type: string
+          required: true
+    - name: people-resourceName}:updateContact
+      path: /people/{resourceName}:updateContact
+      operations:
+      - name: updatecontact
+        method: PATCH
+        description: Google People Update Contact
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceName
+          in: path
+          type: string
+          required: true
+        - name: updatePersonFields
+          in: query
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_PEOPLE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: openapi-people-rest
+    port: 8080
+    description: REST adapter for Google People API — People. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/people/me/connections
+      name: people-me-connections
+      description: REST surface for people-me-connections.
+      operations:
+      - method: GET
+        name: listconnections
+        description: Google People List Connections
+        call: openapi-people.listconnections
+        with:
+          personFields: rest.personFields
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+          sortOrder: rest.sortOrder
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/people/{resourcename}
+      name: people-resourcename
+      description: REST surface for people-resourceName.
+      operations:
+      - method: GET
+        name: getperson
+        description: Google People Get Person
+        call: openapi-people.getperson
+        with:
+          resourceName: rest.resourceName
+          personFields: rest.personFields
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/people/resourcename-deletecontact
+      name: people-resourcename-deletecontact
+      description: REST surface for people-resourceName}:deleteContact.
+      operations:
+      - method: DELETE
+        name: deletecontact
+        description: Google People Delete Contact
+        call: openapi-people.deletecontact
+        with:
+          resourceName: rest.resourceName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/people/resourcename-updatecontact
+      name: people-resourcename-updatecontact
+      description: REST surface for people-resourceName}:updateContact.
+      operations:
+      - method: PATCH
+        name: updatecontact
+        description: Google People Update Contact
+        call: openapi-people.updatecontact
+        with:
+          resourceName: rest.resourceName
+          updatePersonFields: rest.updatePersonFields
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openapi-people-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google People API — People. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: google-people-list-connections
+      description: Google People List Connections
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-people.listconnections
+      with:
+        personFields: tools.personFields
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+        sortOrder: tools.sortOrder
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-people-get-person
+      description: Google People Get Person
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-people.getperson
+      with:
+        resourceName: tools.resourceName
+        personFields: tools.personFields
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-people-delete-contact
+      description: Google People Delete Contact
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: openapi-people.deletecontact
+      with:
+        resourceName: tools.resourceName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-people-update-contact
+      description: Google People Update Contact
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: openapi-people.updatecontact
+      with:
+        resourceName: tools.resourceName
+        updatePersonFields: tools.updatePersonFields
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

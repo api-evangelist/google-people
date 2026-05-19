@@ -1,0 +1,234 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google People API — contactGroups
+  description: 'Google People API — contactGroups. 5 operations. Lead operation: Google People List Contact Groups. Self-contained
+    Naftiko capability covering one Google People business surface.'
+  tags:
+  - Google People
+  - contactGroups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_PEOPLE_API_KEY: GOOGLE_PEOPLE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openapi-contactgroups
+    baseUri: https://people.googleapis.com/v1
+    description: Google People API — contactGroups business capability. Self-contained, no shared references.
+    resources:
+    - name: contactGroups
+      path: /contactGroups
+      operations:
+      - name: listcontactgroups
+        method: GET
+        description: Google People List Contact Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: pageSize
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+      - name: createcontactgroup
+        method: POST
+        description: Google People Create Contact Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: contactGroups-resourceName
+      path: /contactGroups/{resourceName}
+      operations:
+      - name: getcontactgroup
+        method: GET
+        description: Google People Get Contact Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceName
+          in: path
+          type: string
+          required: true
+      - name: updatecontactgroup
+        method: PUT
+        description: Google People Update Contact Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceName
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecontactgroup
+        method: DELETE
+        description: Google People Delete Contact Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceName
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_PEOPLE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: openapi-contactgroups-rest
+    port: 8080
+    description: REST adapter for Google People API — contactGroups. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/contactgroups
+      name: contactgroups
+      description: REST surface for contactGroups.
+      operations:
+      - method: GET
+        name: listcontactgroups
+        description: Google People List Contact Groups
+        call: openapi-contactgroups.listcontactgroups
+        with:
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcontactgroup
+        description: Google People Create Contact Group
+        call: openapi-contactgroups.createcontactgroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/contactgroups/{resourcename}
+      name: contactgroups-resourcename
+      description: REST surface for contactGroups-resourceName.
+      operations:
+      - method: GET
+        name: getcontactgroup
+        description: Google People Get Contact Group
+        call: openapi-contactgroups.getcontactgroup
+        with:
+          resourceName: rest.resourceName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecontactgroup
+        description: Google People Update Contact Group
+        call: openapi-contactgroups.updatecontactgroup
+        with:
+          resourceName: rest.resourceName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecontactgroup
+        description: Google People Delete Contact Group
+        call: openapi-contactgroups.deletecontactgroup
+        with:
+          resourceName: rest.resourceName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openapi-contactgroups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google People API — contactGroups. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: google-people-list-contact-groups
+      description: Google People List Contact Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-contactgroups.listcontactgroups
+      with:
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-people-create-contact-group
+      description: Google People Create Contact Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openapi-contactgroups.createcontactgroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-people-get-contact-group
+      description: Google People Get Contact Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-contactgroups.getcontactgroup
+      with:
+        resourceName: tools.resourceName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-people-update-contact-group
+      description: Google People Update Contact Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: openapi-contactgroups.updatecontactgroup
+      with:
+        resourceName: tools.resourceName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-people-delete-contact-group
+      description: Google People Delete Contact Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: openapi-contactgroups.deletecontactgroup
+      with:
+        resourceName: tools.resourceName
+      outputParameters:
+      - type: object
+        mapping: $.
