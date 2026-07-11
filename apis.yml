@@ -38,6 +38,8 @@ apis:
       - type: JSONSchema
         url: json-schema/Person.json
 common:
+  - type: OAuthScopes
+    url: scopes/google-people-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/googleapis
   - type: Portal
