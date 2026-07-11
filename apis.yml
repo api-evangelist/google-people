@@ -38,6 +38,12 @@ apis:
       - type: JSONSchema
         url: json-schema/Person.json
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-people-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-people-domain-security.yml
+  - type: Authentication
+    url: authentication/google-people-authentication.yml
   - type: OAuthScopes
     url: scopes/google-people-scopes.yml
   - type: GitHubOrganization
