@@ -1,0 +1,254 @@
+openapi: 3.1.0
+info:
+  title: Google contactGroups People API
+  description: The Google People API provides access to information about profiles and contacts. It enables reading and managing the authenticated user's contacts and accessing profile information for authenticated users across Google services.
+  version: 1.0.0
+  contact:
+    name: Google
+    url: https://developers.google.com/people
+servers:
+- url: https://people.googleapis.com/v1
+security:
+- OAuth2: []
+tags:
+- name: People
+paths:
+  /people/{resourceName}:
+    get:
+      operationId: getPerson
+      summary: Google People Get Person
+      description: Provides information about a person by specifying a resource name.
+      parameters:
+      - name: resourceName
+        in: path
+        required: true
+        description: The resource name of the person (e.g., people/me).
+        schema:
+          type: string
+      - name: personFields
+        in: query
+        required: true
+        description: A field mask to restrict which fields on the person are returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+      tags:
+      - People
+  /people/{resourceName}:deleteContact:
+    delete:
+      operationId: deleteContact
+      summary: Google People Delete Contact
+      description: Delete a contact person.
+      parameters:
+      - name: resourceName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - People
+  /people/{resourceName}:updateContact:
+    patch:
+      operationId: updateContact
+      summary: Google People Update Contact
+      description: Update contact data for an existing contact person.
+      parameters:
+      - name: resourceName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: updatePersonFields
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+      tags:
+      - People
+  /people/me/connections:
+    get:
+      operationId: listConnections
+      summary: Google People List Connections
+      description: Provides a list of the authenticated user's contacts.
+      parameters:
+      - name: personFields
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
+      - name: sortOrder
+        in: query
+        schema:
+          type: string
+          enum:
+          - LAST_MODIFIED_ASCENDING
+          - LAST_MODIFIED_DESCENDING
+          - FIRST_NAME_ASCENDING
+          - LAST_NAME_ASCENDING
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConnectionsResponse'
+      tags:
+      - People
+components:
+  schemas:
+    ListConnectionsResponse:
+      type: object
+      properties:
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+        nextPageToken:
+          type: string
+        totalPeople:
+          type: integer
+        totalItems:
+          type: integer
+    Person:
+      type: object
+      properties:
+        resourceName:
+          type: string
+        etag:
+          type: string
+        names:
+          type: array
+          items:
+            type: object
+            properties:
+              displayName:
+                type: string
+              familyName:
+                type: string
+              givenName:
+                type: string
+              middleName:
+                type: string
+        emailAddresses:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              type:
+                type: string
+        phoneNumbers:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              type:
+                type: string
+        addresses:
+          type: array
+          items:
+            type: object
+            properties:
+              formattedValue:
+                type: string
+              type:
+                type: string
+              streetAddress:
+                type: string
+              city:
+                type: string
+              region:
+                type: string
+              postalCode:
+                type: string
+              country:
+                type: string
+        organizations:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              title:
+                type: string
+        photos:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+        birthdays:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: object
+                properties:
+                  year:
+                    type: integer
+                  month:
+                    type: integer
+                  day:
+                    type: integer
+        biographies:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+        urls:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              type:
+                type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/contacts: Manage contacts
+            https://www.googleapis.com/auth/contacts.readonly: View contacts

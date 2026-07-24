@@ -1,0 +1,51 @@
+openapi: 3.1.0
+info:
+  title: Google People contactGroups people:searchContacts API
+  description: The Google People API provides access to information about profiles and contacts. It enables reading and managing the authenticated user's contacts and accessing profile information for authenticated users across Google services.
+  version: 1.0.0
+  contact:
+    name: Google
+    url: https://developers.google.com/people
+servers:
+- url: https://people.googleapis.com/v1
+security:
+- OAuth2: []
+tags:
+- name: people:searchContacts
+paths:
+  /people:searchContacts:
+    get:
+      operationId: searchContacts
+      summary: Google People Search Contacts
+      description: Provides a list of contacts in the user's contact groups that match a query.
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: readMask
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - people:searchContacts
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/contacts: Manage contacts
+            https://www.googleapis.com/auth/contacts.readonly: View contacts

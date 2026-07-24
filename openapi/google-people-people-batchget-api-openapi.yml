@@ -1,0 +1,49 @@
+openapi: 3.1.0
+info:
+  title: Google People contactGroups people:batchGet API
+  description: The Google People API provides access to information about profiles and contacts. It enables reading and managing the authenticated user's contacts and accessing profile information for authenticated users across Google services.
+  version: 1.0.0
+  contact:
+    name: Google
+    url: https://developers.google.com/people
+servers:
+- url: https://people.googleapis.com/v1
+security:
+- OAuth2: []
+tags:
+- name: people:batchGet
+paths:
+  /people:batchGet:
+    get:
+      operationId: batchGetPeople
+      summary: Google People Batch Get People
+      description: Provides information about a list of specific people.
+      parameters:
+      - name: resourceNames
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: personFields
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - people:batchGet
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/contacts: Manage contacts
+            https://www.googleapis.com/auth/contacts.readonly: View contacts
