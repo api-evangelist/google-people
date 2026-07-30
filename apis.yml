@@ -3,7 +3,20 @@ name: Google People
 description: >-
   The Google People API provides access to information about profiles and contacts. It enables reading and managing the
   authenticated user's contacts, contact groups, and profile information across Google services.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-people.png
 url: https://raw.githubusercontent.com/api-evangelist/google-people/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
@@ -16,28 +29,101 @@ tags:
   - People
   - Profiles
 apis:
-  - name: Google People API
-    description: >-
-      Provides access to Google Contacts data including creating, reading, updating, and deleting contacts and contact
-      groups, searching contacts, and accessing profile information.
-    humanURL: https://developers.google.com/people
-    baseURL: https://people.googleapis.com/v1
-    tags:
-      - Contacts
-      - People
-      - Profiles
-    properties:
-      - type: Documentation
-        url: https://developers.google.com/people/api/rest
-      - type: OpenAPI
-        url: openapi/openapi.yml
-      - type: Authentication
-        url: https://developers.google.com/people/v1/how-tos/authorizing
-      - type: GettingStarted
-        url: https://developers.google.com/people/v1/getting-started
-      - type: JSONSchema
-        url: json-schema/Person.json
+- aid: google-people:google-people-contactgroups-api
+  name: Google People contactGroups API
+  description: The contactGroups API from Google People — 2 operation(s) for contactgroups.
+  humanURL: https://developers.google.com/people
+  baseURL: https://people.googleapis.com/v1
+  tags:
+  - contactGroups
+  properties:
+  - type: OpenAPI
+    url: openapi/google-people-contactgroups-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/people/api/rest
+  - type: Authentication
+    url: https://developers.google.com/people/v1/how-tos/authorizing
+  - type: GettingStarted
+    url: https://developers.google.com/people/v1/getting-started
+  - type: JSONSchema
+    url: json-schema/Person.json
+- aid: google-people:google-people-people-api
+  name: Google People People API
+  description: The People API from Google People — 4 operation(s) for people.
+  humanURL: https://developers.google.com/people
+  baseURL: https://people.googleapis.com/v1
+  tags:
+  - People
+  properties:
+  - type: OpenAPI
+    url: openapi/google-people-people-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/people/api/rest
+  - type: Authentication
+    url: https://developers.google.com/people/v1/how-tos/authorizing
+  - type: GettingStarted
+    url: https://developers.google.com/people/v1/getting-started
+  - type: JSONSchema
+    url: json-schema/Person.json
+- aid: google-people:google-people-people-batchget-api
+  name: Google People people:batchGet API
+  description: The people:batchGet API from Google People — 1 operation(s) for people:batchget.
+  humanURL: https://developers.google.com/people
+  baseURL: https://people.googleapis.com/v1
+  tags:
+  - people:batchGet
+  properties:
+  - type: OpenAPI
+    url: openapi/google-people-people-batchget-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/people/api/rest
+  - type: Authentication
+    url: https://developers.google.com/people/v1/how-tos/authorizing
+  - type: GettingStarted
+    url: https://developers.google.com/people/v1/getting-started
+  - type: JSONSchema
+    url: json-schema/Person.json
+- aid: google-people:google-people-people-createcontact-api
+  name: Google People people:createContact API
+  description: >-
+    The people:createContact API from Google People — 1 operation(s) for people:createcontact.
+  humanURL: https://developers.google.com/people
+  baseURL: https://people.googleapis.com/v1
+  tags:
+  - people:createContact
+  properties:
+  - type: OpenAPI
+    url: openapi/google-people-people-createcontact-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/people/api/rest
+  - type: Authentication
+    url: https://developers.google.com/people/v1/how-tos/authorizing
+  - type: GettingStarted
+    url: https://developers.google.com/people/v1/getting-started
+  - type: JSONSchema
+    url: json-schema/Person.json
+- aid: google-people:google-people-people-searchcontacts-api
+  name: Google People people:searchContacts API
+  description: >-
+    The people:searchContacts API from Google People — 1 operation(s) for people:searchcontacts.
+  humanURL: https://developers.google.com/people
+  baseURL: https://people.googleapis.com/v1
+  tags:
+  - people:searchContacts
+  properties:
+  - type: OpenAPI
+    url: openapi/google-people-people-searchcontacts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/people/api/rest
+  - type: Authentication
+    url: https://developers.google.com/people/v1/how-tos/authorizing
+  - type: GettingStarted
+    url: https://developers.google.com/people/v1/getting-started
+  - type: JSONSchema
+    url: json-schema/Person.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/google-people/overview
   - type: AgenticAccess
     url: agentic-access/google-people-agentic-access.yml
   - type: VulnerabilityDisclosure
