@@ -1,0 +1,142 @@
+{
+  "info": {
+    "_postman_id": "2dc72f9c-ede4-4626-99eb-55e5196e4599",
+    "name": "Google People contactGroups people:batchGet API",
+    "description": "The Google People API provides access to information about profiles and contacts. It enables reading and managing the authenticated user's contacts and accessing profile information for authenticated users across Google services.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:49:57.000Z",
+    "updatedAt": "2026-07-28T01:49:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2dc72f9c-ede4-4626-99eb-55e5196e4599"
+  },
+  "item": [
+    {
+      "name": "people:batchGet",
+      "item": [
+        {
+          "name": "Google People Batch Get People",
+          "id": "f3133067-2ac5-4362-a622-87de223554ed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/people:batchGet?resourceNames=<string>&resourceNames=<string>&personFields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "people:batchGet"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "resourceNames",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "resourceNames",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "personFields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Provides information about a list of specific people."
+          },
+          "response": [
+            {
+              "id": "be1ad70b-2c9c-4173-b03d-7d915508c730",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/people:batchGet?resourceNames=<string>&personFields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "people:batchGet"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "resourceNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "personFields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:49:58.000Z",
+              "updatedAt": "2026-07-28T01:49:58.000Z",
+              "uid": "35240-be1ad70b-2c9c-4173-b03d-7d915508c730"
+            }
+          ],
+          "createdAt": "2026-07-28T01:49:58.000Z",
+          "updatedAt": "2026-07-28T01:49:58.000Z",
+          "uid": "35240-f3133067-2ac5-4362-a622-87de223554ed"
+        }
+      ],
+      "id": "6bb81f90-05cf-4984-8a37-6ee2ffe56321",
+      "createdAt": "2026-07-28T01:49:58.000Z",
+      "updatedAt": "2026-07-28T01:49:58.000Z",
+      "uid": "35240-6bb81f90-05cf-4984-8a37-6ee2ffe56321"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/contacts https://www.googleapis.com/auth/contacts.readonly",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://people.googleapis.com/v1"
+    }
+  ]
+}

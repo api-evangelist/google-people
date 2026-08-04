@@ -1,0 +1,495 @@
+{
+  "info": {
+    "_postman_id": "1c13bc49-6b35-49ae-b65d-7c73bc3f0107",
+    "name": "Google People contactGroups API",
+    "description": "The Google People API provides access to information about profiles and contacts. It enables reading and managing the authenticated user's contacts and accessing profile information for authenticated users across Google services.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:49:55.000Z",
+    "updatedAt": "2026-07-28T01:49:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1c13bc49-6b35-49ae-b65d-7c73bc3f0107"
+  },
+  "item": [
+    {
+      "name": "contactGroups",
+      "item": [
+        {
+          "name": "{resourceName}",
+          "item": [
+            {
+              "name": "Google People Get Contact Group",
+              "id": "a7308517-3ffe-49bb-ac92-78fbd33879a8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contactGroups/:resourceName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contactGroups",
+                    ":resourceName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5051d192-bb55-4d76-97de-d0a49bb56f60",
+                      "key": "resourceName",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get a specific contact group."
+              },
+              "response": [
+                {
+                  "id": "8c82409c-21eb-44b1-b627-1a111d4344b2",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contactGroups/:resourceName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contactGroups",
+                        ":resourceName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resourceName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"resourceName\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"name\": \"<string>\",\n  \"formattedName\": \"<string>\",\n  \"memberCount\": \"<integer>\",\n  \"groupType\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:49:56.000Z",
+                  "updatedAt": "2026-07-28T01:49:56.000Z",
+                  "uid": "35240-8c82409c-21eb-44b1-b627-1a111d4344b2"
+                }
+              ],
+              "createdAt": "2026-07-28T01:49:56.000Z",
+              "updatedAt": "2026-07-28T01:49:56.000Z",
+              "uid": "35240-a7308517-3ffe-49bb-ac92-78fbd33879a8"
+            },
+            {
+              "name": "Google People Update Contact Group",
+              "id": "5d333724-fc84-4f57-8883-b8b8c3e1d9a7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceName\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"name\": \"<string>\",\n  \"formattedName\": \"<string>\",\n  \"memberCount\": \"<integer>\",\n  \"groupType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contactGroups/:resourceName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contactGroups",
+                    ":resourceName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b58e4075-a5d0-4e1a-92d8-53a13f276b65",
+                      "key": "resourceName",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Update the name of an existing contact group."
+              },
+              "response": [
+                {
+                  "id": "f8a7a78e-e25d-46d2-818d-1f43020f2777",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"resourceName\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"name\": \"<string>\",\n  \"formattedName\": \"<string>\",\n  \"memberCount\": \"<integer>\",\n  \"groupType\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/contactGroups/:resourceName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contactGroups",
+                        ":resourceName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resourceName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:49:56.000Z",
+                  "updatedAt": "2026-07-28T01:49:56.000Z",
+                  "uid": "35240-f8a7a78e-e25d-46d2-818d-1f43020f2777"
+                }
+              ],
+              "createdAt": "2026-07-28T01:49:56.000Z",
+              "updatedAt": "2026-07-28T01:49:56.000Z",
+              "uid": "35240-5d333724-fc84-4f57-8883-b8b8c3e1d9a7"
+            },
+            {
+              "name": "Google People Delete Contact Group",
+              "id": "d429f11f-28a0-418b-b90f-b914d79cd648",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/contactGroups/:resourceName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contactGroups",
+                    ":resourceName"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b3c9594e-f7d8-4714-8397-b749761a32e3",
+                      "key": "resourceName",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Delete an existing contact group."
+              },
+              "response": [
+                {
+                  "id": "3c31fecd-b4c3-4523-b6cd-dcf572885278",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contactGroups/:resourceName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contactGroups",
+                        ":resourceName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "resourceName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:49:56.000Z",
+                  "updatedAt": "2026-07-28T01:49:56.000Z",
+                  "uid": "35240-3c31fecd-b4c3-4523-b6cd-dcf572885278"
+                }
+              ],
+              "createdAt": "2026-07-28T01:49:56.000Z",
+              "updatedAt": "2026-07-28T01:49:56.000Z",
+              "uid": "35240-d429f11f-28a0-418b-b90f-b914d79cd648"
+            }
+          ],
+          "id": "3a6ed8fe-b6e2-46f1-a74c-02e693568c54",
+          "createdAt": "2026-07-28T01:49:56.000Z",
+          "updatedAt": "2026-07-28T01:49:56.000Z",
+          "uid": "35240-3a6ed8fe-b6e2-46f1-a74c-02e693568c54"
+        },
+        {
+          "name": "Google People List Contact Groups",
+          "id": "7ede95e1-1caa-486d-9d5c-b2c4db80c344",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/contactGroups?pageSize=<integer>&pageToken=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contactGroups"
+              ],
+              "query": [
+                {
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "List all contact groups owned by the authenticated user."
+          },
+          "response": [
+            {
+              "id": "c31286ed-f7a7-4207-a669-b4404513c53e",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contactGroups?pageSize=<integer>&pageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contactGroups"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:49:56.000Z",
+              "updatedAt": "2026-07-28T01:49:56.000Z",
+              "uid": "35240-c31286ed-f7a7-4207-a669-b4404513c53e"
+            }
+          ],
+          "createdAt": "2026-07-28T01:49:56.000Z",
+          "updatedAt": "2026-07-28T01:49:56.000Z",
+          "uid": "35240-7ede95e1-1caa-486d-9d5c-b2c4db80c344"
+        },
+        {
+          "name": "Google People Create Contact Group",
+          "id": "12501637-bb8b-4721-ac83-6f5578637639",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceName\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"name\": \"<string>\",\n  \"formattedName\": \"<string>\",\n  \"memberCount\": \"<integer>\",\n  \"groupType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contactGroups",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "contactGroups"
+              ]
+            },
+            "description": "Create a new contact group."
+          },
+          "response": [
+            {
+              "id": "87daaea2-dfb0-4f14-9b3f-03e09b435688",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceName\": \"<string>\",\n  \"etag\": \"<string>\",\n  \"name\": \"<string>\",\n  \"formattedName\": \"<string>\",\n  \"memberCount\": \"<integer>\",\n  \"groupType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/contactGroups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contactGroups"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:49:56.000Z",
+              "updatedAt": "2026-07-28T01:49:56.000Z",
+              "uid": "35240-87daaea2-dfb0-4f14-9b3f-03e09b435688"
+            }
+          ],
+          "createdAt": "2026-07-28T01:49:56.000Z",
+          "updatedAt": "2026-07-28T01:49:56.000Z",
+          "uid": "35240-12501637-bb8b-4721-ac83-6f5578637639"
+        }
+      ],
+      "id": "99230d30-289a-4bde-af97-03ed9f10054e",
+      "createdAt": "2026-07-28T01:49:56.000Z",
+      "updatedAt": "2026-07-28T01:49:56.000Z",
+      "uid": "35240-99230d30-289a-4bde-af97-03ed9f10054e"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/contacts https://www.googleapis.com/auth/contacts.readonly",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://people.googleapis.com/v1"
+    }
+  ]
+}

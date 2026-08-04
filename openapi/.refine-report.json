@@ -1,0 +1,22 @@
+{
+  "provider": "google-people",
+  "sources": [
+    "google-people-contactgroups-api-openapi.yml",
+    "google-people-people-api-openapi.yml",
+    "google-people-people-batchget-api-openapi.yml",
+    "google-people-people-createcontact-api-openapi.yml",
+    "google-people-people-searchcontacts-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-people-contactgroups-api-openapi.yml",
+    "google-people-people-api-openapi.yml",
+    "google-people-people-batchget-api-openapi.yml",
+    "google-people-people-createcontact-api-openapi.yml",
+    "google-people-people-searchcontacts-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
