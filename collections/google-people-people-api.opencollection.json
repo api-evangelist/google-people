@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google contactGroups People API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "People",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google People Get Person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://people.googleapis.com/v1/people/:resourceName",
+            "params": [
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "path",
+                "description": "The resource name of the person (e.g., people/me)."
+              },
+              {
+                "name": "personFields",
+                "value": "",
+                "type": "query",
+                "description": "A field mask to restrict which fields on the person are returned."
+              }
+            ]
+          },
+          "docs": "Provides information about a person by specifying a resource name."
+        },
+        {
+          "info": {
+            "name": "Google People Delete Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://people.googleapis.com/v1/people/:resourceName:deleteContact",
+            "params": [
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a contact person."
+        },
+        {
+          "info": {
+            "name": "Google People Update Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://people.googleapis.com/v1/people/:resourceName:updateContact",
+            "params": [
+              {
+                "name": "resourceName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "updatePersonFields",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update contact data for an existing contact person."
+        },
+        {
+          "info": {
+            "name": "Google People List Connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://people.googleapis.com/v1/people/me/connections",
+            "params": [
+              {
+                "name": "personFields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Provides a list of the authenticated user's contacts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

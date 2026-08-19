@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google People contactGroups people:searchContacts API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "people:searchContacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google People Search Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://people.googleapis.com/v1/people:searchContacts",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "readMask",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Provides a list of contacts in the user's contact groups that match a query."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
