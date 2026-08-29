@@ -3,6 +3,18 @@ name: Google People
 description: >-
   The Google People API provides access to information about profiles and contacts. It enables reading and managing the
   authenticated user's contacts, contact groups, and profile information across Google services.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
