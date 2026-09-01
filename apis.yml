@@ -46,7 +46,8 @@ apis:
   description: The contactGroups API from Google People — 2 operation(s) for contactgroups.
   humanURL: https://developers.google.com/people
   baseURL: https://people.googleapis.com/v1
-  tags: []
+  tags:
+  - Contact Groups
   tags_raw:
   - contactGroups
   properties:
@@ -103,7 +104,7 @@ apis:
   humanURL: https://developers.google.com/people
   baseURL: https://people.googleapis.com/v1
   tags:
-  - people:createContact
+  - People:createContact
   tags_raw:
   - people:createContact
   properties:
@@ -124,7 +125,7 @@ apis:
   humanURL: https://developers.google.com/people
   baseURL: https://people.googleapis.com/v1
   tags:
-  - people:searchContacts
+  - People:searchContacts
   tags_raw:
   - people:searchContacts
   properties:
