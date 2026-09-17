@@ -41,26 +41,6 @@ tags:
 - People
 - Profiles
 apis:
-- aid: google-people:google-people-contactgroups-api
-  name: Google People contactGroups API
-  description: The contactGroups API from Google People — 2 operation(s) for contactgroups.
-  humanURL: https://developers.google.com/people
-  baseURL: https://people.googleapis.com/v1
-  tags:
-  - Contact Groups
-  tags_raw:
-  - contactGroups
-  properties:
-  - type: OpenAPI
-    url: openapi/google-people-contactgroups-api-openapi.yml
-  - type: Documentation
-    url: https://developers.google.com/people/api/rest
-  - type: Authentication
-    url: https://developers.google.com/people/v1/how-tos/authorizing
-  - type: GettingStarted
-    url: https://developers.google.com/people/v1/getting-started
-  - type: JSONSchema
-    url: json-schema/Person.json
 - aid: google-people:google-people-people-api
   name: Google People API
   description: The People API from Google People — 4 operation(s) for people.
@@ -97,18 +77,16 @@ apis:
     url: https://developers.google.com/people/v1/getting-started
   - type: JSONSchema
     url: json-schema/Person.json
-- aid: google-people:google-people-people-createcontact-api
-  name: Google People:createContact API
-  description: The people:createContact API from Google People — 1 operation(s) for people:createcontact.
+- aid: google-people:google-people-contact-groups-api
+  name: Google People Contact Groups API
+  description: The Contact Groups API from Google People — 2 operation(s) for contact groups.
   humanURL: https://developers.google.com/people
   baseURL: https://people.googleapis.com/v1
   tags:
-  - People:createContact
-  tags_raw:
-  - people:createContact
+  - Contact Groups
   properties:
   - type: OpenAPI
-    url: openapi/google-people-people-createcontact-api-openapi.yml
+    url: openapi/google-people-contact-groups-api-openapi.yml
   - type: Documentation
     url: https://developers.google.com/people/api/rest
   - type: Authentication
@@ -117,18 +95,36 @@ apis:
     url: https://developers.google.com/people/v1/getting-started
   - type: JSONSchema
     url: json-schema/Person.json
-- aid: google-people:google-people-people-searchcontacts-api
-  name: Google People:searchContacts API
-  description: The people:searchContacts API from Google People — 1 operation(s) for people:searchcontacts.
+- aid: google-people:google-people-people-create-contact-api
+  name: Google People People:create Contact API
+  description: >-
+    The People:create Contact API from Google People — 1 operation(s) for people:create contact.
   humanURL: https://developers.google.com/people
   baseURL: https://people.googleapis.com/v1
   tags:
-  - People:searchContacts
-  tags_raw:
-  - people:searchContacts
+  - People:create Contact
   properties:
   - type: OpenAPI
-    url: openapi/google-people-people-searchcontacts-api-openapi.yml
+    url: openapi/google-people-people-create-contact-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/people/api/rest
+  - type: Authentication
+    url: https://developers.google.com/people/v1/how-tos/authorizing
+  - type: GettingStarted
+    url: https://developers.google.com/people/v1/getting-started
+  - type: JSONSchema
+    url: json-schema/Person.json
+- aid: google-people:google-people-people-search-contacts-api
+  name: Google People People:search Contacts API
+  description: >-
+    The People:search Contacts API from Google People — 1 operation(s) for people:search contacts.
+  humanURL: https://developers.google.com/people
+  baseURL: https://people.googleapis.com/v1
+  tags:
+  - People:search Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/google-people-people-search-contacts-api-openapi.yml
   - type: Documentation
     url: https://developers.google.com/people/api/rest
   - type: Authentication
