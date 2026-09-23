@@ -1,29 +1,31 @@
 {
   "provider": "google-people",
   "sources": [
-    "google-people-contactgroups-api-openapi.yml",
-    "google-people-people-api-openapi.yml",
-    "google-people-people-batchget-api-openapi.yml",
-    "google-people-people-createcontact-api-openapi.yml",
-    "google-people-people-searchcontacts-api-openapi.yml"
+    "_original/openapi.yml"
   ],
   "outputs": [
-    "google-people-contactgroups-api-openapi.yml",
     "google-people-people-api-openapi.yml",
+    "google-people-contactgroups-api-openapi.yml",
     "google-people-people-batchget-api-openapi.yml",
     "google-people-people-createcontact-api-openapi.yml",
     "google-people-people-searchcontacts-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 3 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "google-people-contactgroups-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-people-people-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-people-people-batchget-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-people-people-createcontact-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-people-people-searchcontacts-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: google-people-contact-groups-api-openapi.yml, google-people-people-create-contact-api-openapi.yml, google-people-people-search-contacts-api-openapi.yml",
+    "apis.yml register: written (+3 apis, 5 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "google-people-contact-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-people-people-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-people-people-batchget-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-people-people-create-contact-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-people-people-search-contacts-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
