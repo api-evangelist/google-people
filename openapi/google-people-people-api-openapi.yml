@@ -126,6 +126,19 @@ paths:
       - People
 components:
   schemas:
+    ListConnectionsResponse:
+      type: object
+      properties:
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Person'
+        nextPageToken:
+          type: string
+        totalPeople:
+          type: integer
+        totalItems:
+          type: integer
     Person:
       type: object
       properties:
@@ -229,19 +242,6 @@ components:
                 type: string
               type:
                 type: string
-    ListConnectionsResponse:
-      type: object
-      properties:
-        connections:
-          type: array
-          items:
-            $ref: '#/components/schemas/Person'
-        nextPageToken:
-          type: string
-        totalPeople:
-          type: integer
-        totalItems:
-          type: integer
   securitySchemes:
     OAuth2:
       type: oauth2
